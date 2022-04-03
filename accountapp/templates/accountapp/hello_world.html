@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5 text-center">
+    <form action="{% url 'accountapp:hello_world' %}" method="post">
+        {% csrf_token %}
+
+        <input type="text" name="hello_world_value">
+        <button type="submit" class="btn btn-success">Success</button>
+
+        {% if value %}
+        {% for val in value %}
+        <div>
+            {{ val.text }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </form>
+
+</div>
+{% endblock %}
