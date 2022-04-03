@@ -6,10 +6,10 @@
 
 <div class="chk_form text-center" style="max-width:500px; margin: 4rem auto;">
     <div class="mb-4">
-        <h4>Change Info</h4>
+        <h4>Update Profile</h4>
     </div>
     
-    <form action="{% url 'accountapp:update' user.pk %}" method="post">
+    <form action="{% url 'profileapp:update' pk=target_profile.pk %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
 

@@ -6,9 +6,29 @@
         <p>
             {{ target_user.date_joined }}
         </p>
+
+        <img src="{{ target_user.profile.image.url }}" alt="" style="max-width:150px; border-radius: 10rem;">
+
+        {% if target_user.profile %}
         <h2>
-            {{ target_user.username }}
+            {{ target_user.profile.nickname }}
         </h2>
+        <h5>
+            {{ target_user.profile.message }}
+        </h5>
+        <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
+            edit
+        </a>
+
+        {% else %}
+        <a href="{% url 'profileapp:create' %}">
+            <h2>
+                Create Profile
+            </h2>
+        </a>
+        {% endif %}
+
+
 
         {% if target_user == user %}
         <a href="{% url 'accountapp:update' pk=user.pk %}">
