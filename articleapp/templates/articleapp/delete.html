@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center" style="max-width:500px; margin: 4rem auto;">
+    <div>
+        <h4>Delete Article : {{ target_article.title }}</h4>
+    </div>
+    <div>
+        <form action="{% url 'articleapp:delete' pk=target_article.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+    </div>
+</div>
+{% endblock %}
