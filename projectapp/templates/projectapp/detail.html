@@ -3,19 +3,15 @@
 {% block content %}
 <div>
     <div style="text-align:center; max-width:700px; margin:4rem auto;">
-        <h1>
-
-        </h1>
         <img src="{{ target_project.image.url }}" alt="" style="width:auto; max-width:100%;">
-        <p>
-            {{ target_project.title|truncatechars:7 }}
-            {{ target_project.description }}
-
+        <div>
+            <div>{{ target_project.title|truncatechars:7 }}</div>
+            <div>{{ target_project.description }}</div>
             <br><br>
             {{ target_user }}
-            {{ user }}
-        </p>
+        </div>
     </div>
     <hr>
+    {% include 'scippets/list_fragment.html' with article_list=object_list %}
 </div>
 {% endblock %}
