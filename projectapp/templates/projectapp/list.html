@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+.listwrap{display:flex; flex-wrap:wrap;}
+.sepalist{max-width:150px;}
+.sepalist img{width:100%;}
+</style>
+
+
+<div class="container">
+    {{ target_user }}
+    {{ user }}
+    {% if project_list %}
+    <div class="listwrap">
+        {% for project in project_list %}
+        <div class="sepalist">
+            <a href="{% url 'projectapp:detail' pk=project.pk %}">
+                <img src="{{ project.image.url }}" alt="">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center">
+        <h1>아직 게시글이 없습니다.</h1>
+    </div>
+    {% endif %}
+
+
+</div>
+
+
+<div class="text-center">
+    <a href="{% url 'projectapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-3 px-3">
+        Create Project
+    </a>
+</div>
+
+{% endblock %}
