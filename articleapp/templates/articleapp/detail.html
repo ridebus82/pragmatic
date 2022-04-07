@@ -10,10 +10,9 @@
             {{ target.article.writer.profile.nickname }}
         </h5>
         <img src="{{ target_article.image.url }}" alt="" style="width:auto; max-width:100%;">
-        <p>
-
-            {{ target_article.content }}
-        </p>
+        <div class="text-left">
+            {{ target_article.content | safe }}
+        </div>
     </div>
 
     {% if target_article.writer == user %}
