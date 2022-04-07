@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic.list import MultipleObjectMixin
 
 from accountapp.decorator import account_ownership_required
-from accountapp.models import HelloWorld
+
 
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.models import User
@@ -21,24 +21,6 @@ has_ownership = [account_ownership_required, login_required]
 
 
 # Create your views here.
-
-@login_required
-def hello_world(request):
-    if request.method == "POST":
-        temp = request.POST.get('hello_world_value')
-
-        new_hello_world = HelloWorld()
-        new_hello_world.text = temp
-        new_hello_world.save()
-
-        print(new_hello_world)
-        # return render(request,'accountapp/hello_world.html',context={'value' : temp})
-        return HttpResponseRedirect(reverse('accountapp:hello_world'))
-
-    if request.method == "GET":
-        hello_world_list = HelloWorld.objects.all()
-        print(hello_world_list)
-        return render(request, 'accountapp/hello_world.html', context={'value': hello_world_list})
 
 
 class AccountCreateView(CreateView):
