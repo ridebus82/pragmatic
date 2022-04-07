@@ -11,6 +11,22 @@
             {{ target_user }}
         </div>
     </div>
+    
+    <div class="text-center">
+        {% if user.is_authenticated %}
+
+        {% if not subscription %}
+
+        <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}" class="btn btn-primary rounded-pill px-4">
+            Subscribe
+        </a>
+        {% else %}
+        <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}" class="btn btn-dark rounded-pill px-4">
+            Un Subscribe
+        </a>
+        {% endif %}
+        {% endif %}
+    </div>
     <hr>
     {% include 'scippets/list_fragment.html' with article_list=object_list %}
 </div>
