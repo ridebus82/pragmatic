@@ -14,7 +14,7 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -28,6 +28,6 @@ DATABASES = {
         'USER': 'django',
         'PASSWORD': 'password1234',
         'HOST': 'mariadb',
-        'PORT': '',
+        'PORT': '3306',
     }
 }
